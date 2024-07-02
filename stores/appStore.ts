@@ -4,7 +4,12 @@ export interface Contact {
   id: number;
   first_name: string;
   last_name: string;
-  phones: string[];
+  phones: Phone[];
+}
+
+export interface Phone {
+  id: number;
+  number: string;
 }
 
 export interface User {
@@ -16,7 +21,6 @@ export interface User {
 interface AppStore {
   isReady: boolean;
   user: User | null;
-  loading: boolean;
   contacts: Contact[];
 }
 
@@ -25,7 +29,6 @@ export const appStore = defineStore("contacts-store", {
     return {
       isReady: false,
       user: null,
-      loading: true,
       contacts: [],
     };
   },

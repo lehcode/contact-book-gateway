@@ -22,9 +22,15 @@ export default defineNuxtConfig({
     devProxy: {
       '/api': {
         target: 'http://api-laravel/api',
+        headers: { "Access-Control-Allow-Origin": "*", 'Access-Control-Allow-Headers': '*', },
         changeOrigin: true,
         prependPath: true,
       }
     }
-  }
+  },
+  routeRules: {
+      '/api/**': {
+          proxy: { to: "http://api-laravel/api/**", },
+      }
+    }
 })
