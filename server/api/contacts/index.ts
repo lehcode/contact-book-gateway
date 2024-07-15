@@ -1,4 +1,6 @@
 import { defineEventHandler, readBody } from "h3";
+import { ref, Ref } from "vue/dist/vue.js";
+import { Contact } from "~/stores/appStore";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
@@ -14,7 +16,8 @@ export default defineEventHandler(async (event) => {
   if (method === "POST") {
     const body = await readBody(event);
     console.log(body);
-    options.body = JSON.striconst contactRef: Ref<Contact[]> = ref([]);ngify(body);
+    // const contactRef: Ref<Contact[]> = ref(body);
+    options.body = JSON.stringify(body);
   }
 
   const response = await fetch(url, { method, ...options });
