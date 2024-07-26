@@ -22,13 +22,13 @@ export default defineNuxtConfig({
   // },
   runtimeConfig: {
     public: {
-      apiBase: 'http://api-laravel/api'
+      apiBase: 'http://php-api/api'
     }
   },
   nitro: {
     devProxy: {
       '/api': {
-        target: 'http://api-laravel/api',
+        target: 'http://php-api/api',
         headers: { "Access-Control-Allow-Origin": "*", 'Access-Control-Allow-Headers': '*', },
         changeOrigin: true,
         prependPath: true,
@@ -54,7 +54,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
       '/api/**': {
-          proxy: { to: "http://api-laravel/api/**", },
+          proxy: { to: "http://php-api/api/**", },
       }
     },
     
