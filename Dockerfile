@@ -1,5 +1,5 @@
 ARG node_version
-FROM node:${node_version}
+FROM node:${node_version:-20.12.2}
 
 ARG app_root
 ARG user
